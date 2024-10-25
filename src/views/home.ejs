@@ -1,0 +1,12 @@
+<h2>최신 포스트</h2>
+<ul>
+    <% if (rssData && rssData.length > 0) { %>
+        <% rssData.forEach(item => { %>
+            <li>
+                <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
+            </li>
+        <% }) %>
+    <% } else { %>
+        <p>No RSS data available.</p>
+    <% } %>
+</ul>

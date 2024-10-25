@@ -1,0 +1,59 @@
+<h2>Trend</h2>
+<div class="trend_container">
+    <div class="date-navigation">
+        <% if (prevDate) { %>
+            <a class="arrow" href="/trend?date=<%= prevDate %>">&#9664; 이전</a>
+        <% } else { %>
+            <span class="arrow-disabled">&#9664; 이전</span>
+        <% } %>
+
+        <span id="currentDate"><%= currentDate %></span>
+
+        <% if (nextDate) { %>
+            <a class="arrow" href="/trend?date=<%= nextDate %>">다음 &#9654;</a>
+        <% } else { %>
+            <span class="arrow-disabled">다음 &#9654;</span>
+        <% } %>
+    </div>
+    <% if (keywords.length === 0) { %>
+        <p>데이터가 없습니다.</p>
+    <% } else { %>
+        <div class="news-feed">
+            <% keywords.forEach(keyword => { %>
+                <div class="news-card">
+                    <% if (keyword.imgUrl) { %>
+                        <img src="<%= keyword.imgUrl %>" alt="<%= keyword.keywordName %>" class="news-thumbnail">
+                    <% } else { %>
+                        <div class="news-thumbnail placeholder"></div>
+                    <% } %>
+                    <div class="news-content">
+                        <% if (keyword.articleUrl) { %>
+                            <a href="<%= keyword.articleUrl %>" target="_blank" class="news-title"><%= keyword.keywordName %></a>
+                        <% } else { %>
+                            <span class="news-title"><%= keyword.keywordName %></span>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+</div>
+
+<!-- 인라인 JavaScript: 스크롤 위치 유지 -->
+<script>
+    // 이전/다음 날짜 링크를 클릭할 때 현재 스크롤 위치를 세션 스토리지에 저장
+    document.querySelectorAll('.arrow').forEach(link => {
+        link.addEventListener('click', () => {
+            sessionStorage.setItem('scrollPosition', window.scrollY);
+        });
+    });
+
+    // 페이지 로드 시 저장된 스크롤 위치를 복원
+    window.addEventListener('load', () => {
+        const savedPosition = sessionStorage.getItem('scrollPosition');
+        if (savedPosition !== null) {
+            window.scrollTo(0, parseInt(savedPosition, 10));
+            sessionStorage.removeItem('scrollPosition');
+        }
+    });
+</script>

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "src",
+    "paths": {
+      "@init/*": ["init/*"],
+      "@public/*": ["public/*"],
+      "@routes/*": ["routes/*"],
+      "@utils/*": ["utils/*"],
+      "@views/*": ["views/*"],
+      "@batch/*": ["batch/*"]
+    },
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*", "../pg_client.js", "../utils.js", "../googleTrends.js"],
+  "exclude": ["node_modules"]
+}
