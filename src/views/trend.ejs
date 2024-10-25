@@ -21,16 +21,16 @@
         <div class="news-feed">
             <% keywords.forEach(keyword => { %>
                 <div class="news-card">
-                    <% if (keyword.imgUrl) { %>
-                        <img src="<%= keyword.imgUrl %>" alt="<%= keyword.keywordName %>" class="news-thumbnail">
+                    <% if (keyword.img_url) { %>
+                        <img src="<%= keyword.img_url %>" alt="<%= keyword.keyword_name %>" class="news-thumbnail">
                     <% } else { %>
                         <div class="news-thumbnail placeholder"></div>
                     <% } %>
                     <div class="news-content">
-                        <% if (keyword.articleUrl) { %>
-                            <a href="<%= keyword.articleUrl %>" target="_blank" class="news-title"><%= keyword.keywordName %></a>
+                        <% if (keyword.article_url) { %>
+                            <a href="<%= keyword.article_url %>" target="_blank" class="news-title"><%= keyword.keyword_name %></a>
                         <% } else { %>
-                            <span class="news-title"><%= keyword.keywordName %></span>
+                            <span class="news-title"><%= keyword.keyword_name %></span>
                         <% } %>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 export interface KeywordData {
-    collectedDate: string; // "YYYY-MM-DD" 형식
-    keywordName: string;
-    imgUrl: string | null;
-    articleUrl: string | null;
+    collected_date: string; // "YYYY-MM-DD" 형식
+    keyword_name: string;
+    img_url: string | null;
+    article_url: string | null;
     rank: number;
 }

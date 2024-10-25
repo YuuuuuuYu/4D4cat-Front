@@ -13,11 +13,11 @@ const getDateRange = (): { start: Date; end: Date } => {
     end.setDate(today.getDate() - 1); // 어제
 
     const start = new Date(today);
-    start.setDate(today.getDate() - 7); // 일주일 전
+    start.setDate(today.getDate() - 8); // 일주일 전
 
     // 시간 초기화
     start.setHours(0, 0, 0, 0);
-    end.setHours(23, 59, 59, 999);
+    end.setHours(0, 0, 0, 0);
 
     return { start, end };
 };
@@ -25,10 +25,10 @@ const getDateRange = (): { start: Date; end: Date } => {
 // 데이터를 날짜별로 그룹화
 const groupDataByDate = (data: KeywordData[]) => {
     return data.reduce((acc: { [key: string]: KeywordData[] }, item) => {
-        if (!acc[item.collectedDate]) {
-            acc[item.collectedDate] = [];
+        if (!acc[item.collected_date]) {
+            acc[item.collected_date] = [];
         }
-        acc[item.collectedDate].push(item);
+        acc[item.collected_date].push(item);
         return acc;
     }, {});
 };
@@ -46,7 +46,7 @@ export const processTrendData = (collectedData: KeywordData[]) => {
 
     // 필터링: 일주일 전부터 어제까지
     const filteredData: KeywordData[] = collectedData.filter(item => {
-        const itemDate = parseDate(item.collectedDate);
+        const itemDate = parseDate(item.collected_date);
         return itemDate >= start && itemDate <= end;
     });
 
