@@ -1,5 +1,5 @@
 import express from 'express';
-import { collectedData } from '@batch/export/collectedData';
+import { collectedData } from '@public/export/collectedData';
 import { processTrendData } from '@init/InitTrendsData';
 
 const router = express.Router();
