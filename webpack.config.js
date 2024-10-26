@@ -4,12 +4,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/app.ts',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  watch: process.env.NODE_ENV === 'dev' ? true : false, // 파일 변경 감지
   resolve: {
     extensions: ['.ts', '.js'],
     plugins: [
@@ -32,8 +33,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/views', to: 'views' }, // views 폴더를 dist/views로 복사
-        { from: 'src/public', to: 'public' } // public 폴더를 dist/public으로 복사
+        { from: 'views', to: 'views' },
+        { from: 'public', to: 'public' } 
       ],
     }),
   ],

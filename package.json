@@ -4,9 +4,9 @@
   "description": "A simple blog using TypeScript and Express",
   "main": "dist/app.js",
   "scripts": {
-    "start": "NODE_ENV=prd node dist/bundle.js",
-    "dev": "NODE_ENV=dev node dist/bundle.js",
-    "build": "tsc",
+    "dev": "concurrently \"webpack --watch\" \"nodemon dist/bundle.js\"",
+    "build": "webpack",
+    "start": "nodemon dist/bundle.js",
     "bundle": "webpack --config webpack.config.js"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "@types/express-ejs-layouts": "^2.5.1",
     "@types/node": "^20.3.1",
     "@types/xmldom": "^0.1.34",
+    "concurrently": "^9.0.1",
     "copy-webpack-plugin": "^12.0.2",
     "nodemon": "^2.0.22",
     "ts-loader": "^9.5.1",
